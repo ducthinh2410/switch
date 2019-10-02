@@ -11,7 +11,7 @@ import RxSwift
 
 protocol UserSettingsRepository {
     func load() -> Observable<UserSettings>
-    func save(settings: UserSettings) -> Observable<Void>
+    @discardableResult func save(settings: UserSettings) -> Observable<Void>
 }
 
 ///
@@ -41,6 +41,7 @@ class LocalUserSettingRepository: UserSettingsRepository {
 
     var userDefault: UserDefaults = UserDefaults.standard
 
+    // swiftlint:disable line_length
     func load() -> Observable<UserSettings> {
         return Observable.create { [weak self] observer -> Disposable in
 
@@ -67,7 +68,8 @@ class LocalUserSettingRepository: UserSettingsRepository {
             }
 
             strongSelf.userDefault.set(settings, forKey: LocalUserSettingRepository.userSettingsKey)
-
+            observer.onNext(())
+            observer.onCompleted()
             return Disposables.create()
         }
     }
