@@ -18,14 +18,14 @@ protocol APIRequest {
     var pathParams: Parameters? { get }
     var headers: HTTPHeaders? { get }
     var body: RequestBody? { get }
-    var cachePolicy: URLRequest.CachePolicy? { get set }
+    var cachePolicy: URLRequest.CachePolicy? { get }
     var timeout: TimeInterval? { get }
 
     func headers(in service: APIClient) -> HTTPHeaders
     func url(in service: APIClient) throws -> URL
     func urlRequest(in service: APIClient) throws -> URLRequest
 
-    func parseResponse(_ data: Data) -> ResponseDataType
+    func parseResponse(_ data: Data) throws -> ResponseDataType
 }
 
 ///
@@ -48,7 +48,7 @@ extension APIRequest {
         return nil
     }
 
-    var headers: Parameters? {
+    var headers: HTTPHeaders? {
         return nil
     }
 
@@ -57,6 +57,10 @@ extension APIRequest {
     }
 
     var cachePolicy: URLRequest.CachePolicy? {
+        return nil
+    }
+
+    var timeout: TimeInterval? {
         return nil
     }
 
