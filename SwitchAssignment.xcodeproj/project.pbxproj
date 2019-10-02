@@ -12,6 +12,8 @@
 		25DE6BBA2344C887006213FD /* UserSettingsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DE6BB92344C887006213FD /* UserSettingsRequest.swift */; };
 		25DE6BBD2344C99A006213FD /* APIRequest+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DE6BBC2344C99A006213FD /* APIRequest+Decodable.swift */; };
 		25DE6BBF2344CB72006213FD /* UserSettingsUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DE6BBE2344CB72006213FD /* UserSettingsUpdateRequest.swift */; };
+		25DE6BC12344CDCE006213FD /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DE6BC02344CDCE006213FD /* API.swift */; };
+		25DE6BC32344CFA6006213FD /* URLSession+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DE6BC22344CFA6006213FD /* URLSession+Rx.swift */; };
 		25FA48F8234488F900856849 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FA48F7234488F900856849 /* AppDelegate.swift */; };
 		25FA48FC234488F900856849 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FA48FB234488F900856849 /* ViewController.swift */; };
 		25FA48FF234488F900856849 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25FA48FD234488F900856849 /* Main.storyboard */; };
@@ -42,6 +44,8 @@
 		25DE6BB92344C887006213FD /* UserSettingsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsRequest.swift; sourceTree = "<group>"; };
 		25DE6BBC2344C99A006213FD /* APIRequest+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIRequest+Decodable.swift"; sourceTree = "<group>"; };
 		25DE6BBE2344CB72006213FD /* UserSettingsUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsUpdateRequest.swift; sourceTree = "<group>"; };
+		25DE6BC02344CDCE006213FD /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		25DE6BC22344CFA6006213FD /* URLSession+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Rx.swift"; sourceTree = "<group>"; };
 		25FA48F4234488F900856849 /* SwitchAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwitchAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25FA48F7234488F900856849 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25FA48FB234488F900856849 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,8 +155,9 @@
 			children = (
 				25FA491F2344B33900856849 /* Core */,
 				25DE6BB92344C887006213FD /* UserSettingsRequest.swift */,
-				25DE6BBC2344C99A006213FD /* APIRequest+Decodable.swift */,
 				25DE6BBE2344CB72006213FD /* UserSettingsUpdateRequest.swift */,
+				25DE6BC02344CDCE006213FD /* API.swift */,
+				25DE6BBC2344C99A006213FD /* APIRequest+Decodable.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 				25FA49222344B35A00856849 /* APIRequest.swift */,
 				25FA49242344B72800856849 /* RequestBody.swift */,
 				25FA49272344B93900856849 /* Other.swift */,
+				25DE6BC22344CFA6006213FD /* URLSession+Rx.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -370,11 +376,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25DE6BC12344CDCE006213FD /* API.swift in Sources */,
 				25DE6BBF2344CB72006213FD /* UserSettingsUpdateRequest.swift in Sources */,
 				25FA48FC234488F900856849 /* ViewController.swift in Sources */,
 				25DE6BB82344C6EF006213FD /* APIClient.swift in Sources */,
 				25FA49232344B35A00856849 /* APIRequest.swift in Sources */,
 				25FA491E234492E700856849 /* UserSettings.swift in Sources */,
+				25DE6BC32344CFA6006213FD /* URLSession+Rx.swift in Sources */,
 				25DE6BBD2344C99A006213FD /* APIRequest+Decodable.swift in Sources */,
 				25FA48F8234488F900856849 /* AppDelegate.swift in Sources */,
 				25DE6BBA2344C887006213FD /* UserSettingsRequest.swift in Sources */,

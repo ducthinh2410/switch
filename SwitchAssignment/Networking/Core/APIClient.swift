@@ -14,6 +14,20 @@ protocol APIClient {
     var headers: HTTPHeaders { get }
     var cachePolicy: URLRequest.CachePolicy { get }
     var timeout: TimeInterval { get }
+    var session: URLSession { get }
 
     func load<R: APIRequest>(_ request: R) -> Observable<R.ResponseDataType>
+}
+
+extension APIClient {
+    func load<R: APIRequest>(_ request: R) -> Observable<R.ResponseDataType> {
+        do {
+            let urlRequest = try request.urlRequest(in: self)
+            return session.rx.data(request: urlRequest).map { data in
+                return try request.parseResponse(data)
+            }
+        } catch {
+            return Observable<R.ResponseDataType>.error(error)
+        }
+    }
 }
