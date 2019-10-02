@@ -12,7 +12,7 @@ struct UserSettingsUpdateRequest: APIRequest {
 
     typealias ResponseDataType = UserSettings
 
-    var method: HTTPMethod = .put
+    let method: HTTPMethod = .put
 
     let settings: UserSettings
 

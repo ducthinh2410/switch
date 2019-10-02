@@ -17,7 +17,7 @@ enum RxURLSessionError: Error {
 
 extension Reactive where Base: URLSession {
 
-    func response(request: URLRequest) -> Observable<(HTTPURLResponse, Data)> {
+    func httpResponse(request: URLRequest) -> Observable<(HTTPURLResponse, Data)> {
         return Observable.create { (observer) -> Disposable in
             let task = self.base.dataTask(with: request) { (data, response, error) in
 
@@ -40,7 +40,7 @@ extension Reactive where Base: URLSession {
         }
     }
 
-    func data(request: URLRequest) -> Observable<Data> {
+    func httpResponse(request: URLRequest) -> Observable<Data> {
         return response(request: request).map { (response, data) -> Data in
             guard 200..<300 ~= response.statusCode else {
                 throw RxURLSessionError.error(reesponse: response, data: data)

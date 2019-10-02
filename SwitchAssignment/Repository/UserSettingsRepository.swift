@@ -48,7 +48,8 @@ class LocalUserSettingRepository: UserSettingsRepository {
             guard let strongSelf = self else { return Disposables.create() }
 
             let userSettings: UserSettings
-            if let settings = strongSelf.userDefault.object(forKey: LocalUserSettingRepository.userSettingsKey) as? UserSettings {
+            if let data = strongSelf.userDefault.object(forKey: LocalUserSettingRepository.userSettingsKey) as? Data,
+                let settings = try? PropertyListDecoder().decode(UserSettings.self, from: data) {
                 userSettings = settings
             } else {
                 userSettings = UserSettings(state: false) // Default value
@@ -67,7 +68,7 @@ class LocalUserSettingRepository: UserSettingsRepository {
                 return Disposables.create()
             }
 
-            strongSelf.userDefault.set(settings, forKey: LocalUserSettingRepository.userSettingsKey)
+            strongSelf.userDefault.set(try? PropertyListEncoder().encode(settings), forKey: LocalUserSettingRepository.userSettingsKey)
             observer.onNext(())
             observer.onCompleted()
             return Disposables.create()

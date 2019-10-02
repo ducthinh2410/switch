@@ -20,9 +20,24 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        userSettingsViewModel = UserSettingsViewModel(localUserSettingsRepository: LocalUserSettingRepository(),
-                                                      remoteUserSettingsReopsitory: RemoteUserSettingRepository(),
-                                                      switchUpdate: mySwitch.rx.isOn.asObservable())
+        userSettingsViewModel = UserSettingsViewModel(
+            localUserSettingsRepository: LocalUserSettingRepository(),
+            remoteUserSettingsReopsitory: RemoteUserSettingRepository(),
+            switchUpdate: mySwitch.rx
+                .isOn
+                .asObservable()
+                .skip(1) // Skip the first event (current state of Switch)
+                .debounce(RxTimeInterval.seconds(2), scheduler: MainScheduler.instance)
+                .distinctUntilChanged()
+        )
+
+        NotificationCenter.default.rx.notification(UIApplication.didBecomeActiveNotification)
+            .map { _ -> Void in
+                return ()
+            }
+            .bind(to: userSettingsViewModel.reload)
+            .disposed(by: disposeBag)
+
         setUpBindings()
     }
 
