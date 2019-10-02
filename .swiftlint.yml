@@ -1,0 +1,10 @@
+line_length: warning
+force_cast: warning # implicitly
+force_try: warning
+type_body_length:
+  - severity: warning
+  - 350 # warning
+disabled_rules:
+  - variable_name
+excluded: # paths to ignore during linting.
+  - Pods
