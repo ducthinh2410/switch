@@ -72,10 +72,9 @@ extension APIRequest {
 
     func url(in service: APIClient) throws -> URL {
 
-        // Obmit the path parameters and query parameters for simplicity purpose
+        // Omit the path parameters and query parameters for simplicity purpose
         let baseURLString = service.baseUrl.absoluteString.appending(endpoint)
 
-        // TODO: Double check this error type
         guard let url = URL(string: baseURLString) else {
             throw EncodingError.dataIsNotEncodable(baseURLString)
         }

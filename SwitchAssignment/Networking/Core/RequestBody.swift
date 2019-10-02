@@ -10,18 +10,20 @@ import Foundation
 
 struct RequestBody {
     enum Encoding {
-        case json
+        case json // Can be more options such as: urlEncoded, formData...
     }
 
     let data: Any
     let encoding: Encoding
 
     var headers: HTTPHeaders? {
-        return nil
+        switch encoding {
+        case .json:
+            return ["Content-Type": "application/json"]
+        }
     }
 
-    // TODO: Implement this
     func encodedData() throws -> Data? {
-        return nil
+        return try JSONSerialization.data(withJSONObject: data, options: [])
     }
 }
