@@ -1,4 +1,5 @@
 # Switch Assignment
+> Managing a simple piece of UI is a non-trivial task  
 ----
 
 ## Requirements
@@ -13,7 +14,6 @@
   
 ## What have not been implemented
 - [ ] Unit testing for view controller, view model 
-- [ ] UI Testing  
 
 ## Dependencies
 - [RxSwift + RxCocoa](https://github.com/ReactiveX/RxSwift)  
